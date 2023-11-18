@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Cancel Appointment</h2>
+  <form method="post">
+    {% csrf_token %}
+    <p>Are you sure you want to cancel this appointment?</p>
+    <input type="hidden" name="appointment_id" value="{{ appointment_id }}">
+    <input type="submit" value="Yes, Cancel">
+  </form>
+{% endblock %}

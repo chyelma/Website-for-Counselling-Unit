@@ -1,0 +1,20 @@
+<!-- administration/templates/admin_dashboard.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Admin Dashboard</h2>
+  <p>Welcome to the administrative panel.</p>
+
+  <!-- Add dashboard widgets and links -->
+  <div>
+    <h3>Quick Links</h3>
+    <ul>
+        <li><a href="{% url 'manage_users' %}">Manage Users</a></li>
+        <li><a href="{% url 'view_reports' %}">View Reports</a></li>
+        <!-- Add other links as necessary -->
+    </ul>
+  </div>
+
+  <!-- You can add more sections here depending on the admin functionalities -->
+{% endblock %}

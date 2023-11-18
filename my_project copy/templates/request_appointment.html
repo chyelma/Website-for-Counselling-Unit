@@ -1,0 +1,23 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Request Appointment</h2>
+  <form method="post" action="{% url 'request_appointment' %}">
+    {% csrf_token %}
+    <label for="counselor">Counselor:</label>
+    <select name="counselor" id="counselor">
+      {% for counselor in counselors %}
+        <option value="{{ counselor.id }}">{{ counselor.name }}</option>
+      {% endfor %}
+    </select>
+    <br>
+    <label for="date">Date:</label>
+    <input type="date" name="date" required>
+    <br>
+    <label for="time">Time:</label>
+    <input type="time" name="time" required>
+    <br>
+    <input type="submit" value="Request Appointment">
+  </form>
+{% endblock %}

@@ -1,0 +1,21 @@
+<!-- templates/create_appointment.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Create Appointment</h2>
+  <form method="post">
+    {% csrf_token %}
+    <label for="counselor">Select Counselor:</label>
+    <select name="counselor_id" id="counselor">
+      {% for counselor in counselors %}
+        <option value="{{ counselor.id }}">{{ counselor.name }}</option>
+      {% endfor %}
+    </select>
+    <br>
+    <label for="date_time">Date and Time:</label>
+    <input type="datetime-local" name="date_time" required>
+    <br>
+    <input type="submit" value="Create Appointment">
+  </form>
+{% endblock %}
