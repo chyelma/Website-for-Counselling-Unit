@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upcoming Appointments</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .cancel-btn {
+            padding: 6px 12px;
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Upcoming Appointments</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Counsellor Name</th>
+                <th>Counsellor Number</th>
+                <th>Reason of Appointment</th>
+                <th>Request Status</th>
+                <th>Action</th> <!-- Added a column for the cancel button -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in filtered_data %}
+                <tr>
+                    <td>{{ i.posted_by }}</td>
+                    <td>{{ i.mobile }}</td>
+                    <td>{{ i.reason }}</td>
+                    <td>
+                        {% if i.approved %}
+                            Approved
+                        {% else %}
+                            Not Approved
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if not i.approved %}
+                        <form method="POST" action="{% url 'cancel_appointment' pk=i.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="cancel-btn">Cancel</button>
+                            </form>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
