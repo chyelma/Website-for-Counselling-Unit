@@ -12,7 +12,7 @@ class CustomUser(models.Model):
     Age = models.IntegerField( blank=True, null=True)
     phone_regex = RegexValidator(regex=r'^\+8801\d{9}$', message="Phone number must be entered in the format: '+8801########'. Up to 11 digits allowed.")
     phone_number = models.CharField(validators=[phone_regex], max_length=17, blank=True) # Validators should be a list
-    country =  models.CharField(max_length=255, default='')
+    
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -28,7 +28,6 @@ class Counsellor(models.Model):
     gender = models.CharField(max_length=255, blank=True, null=True)
     phone_regex = RegexValidator(regex=r'^\+8801\d{9}$', message="Phone number must be entered in the format: '+8801########'. Up to 11 digits allowed.")
     phone_number = models.CharField(validators=[phone_regex], max_length=17, blank=True) # Validators should be a list
-    country = models.CharField(max_length=255, default='')
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

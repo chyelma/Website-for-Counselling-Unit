@@ -18,8 +18,8 @@ def admin_login(request):
             username = request.POST.get('username')
             password = request.POST.get('password')
             user_obj= User.objects.filter(username=username)
-            if not user_obj.exists():
-                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+            # if not user_obj.exists():
+            #     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
             
             user_obj=authenticate(username=username,password=password)
 
@@ -74,3 +74,17 @@ def cancel_appointment(request,pk):
     appointment = AppointmentRequest.objects.filter(id=pk) # Get the specific appointment
     appointment.delete()  # Delete the appointment
     return render(request, 'upcoming_appointment.html')
+
+
+def patient(request):
+    all_users = CustomUser.objects.filter(Profession="student")
+    return render(request,'patient.html',{'users': all_users})
+
+
+def counsellor(request):
+    all_users = Counsellor.objects.all()
+    return render(request,'counsellor.html',{'users': all_users})
+
+def manageappoinment(request):
+    all_users = AppointmentRequest.objects.all()
+    return render(request,'manageappointment.html',{'users': all_users})
