@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Beautiful Table</title>
+    <style>
+        /* Reset some default styles for the table */
+        .beautiful-table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        /* Style for table headers */
+        .beautiful-table th {
+            background-color: #a29bfe; /* Lavender color for headers */
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-bottom: 2px solid #6c5ce7; /* Darker border color */
+        }
+
+        /* Alternating row colors */
+        .beautiful-table tbody tr:nth-child(even) {
+            background-color: #dfe6e9; /* Light lavender for even rows */
+        }
+
+        /* Style for table cells */
+        .beautiful-table td {
+            padding: 10px; /* Adjusted padding */
+            border-bottom: 1px solid #bdc3c7;
+            text-align: center;
+            max-width: 200px; /* Added max-width to prevent overflow */
+            word-wrap: break-word; /* Wrap long content */
+            font-size: 14px; /* Adjusted font size for better readability */
+        }
+
+        /* Hover effect for rows with animation */
+        .beautiful-table tbody tr {
+            transition: background-color 0.3s ease;
+        }
+
+        .beautiful-table tbody tr:hover {
+            background-color: #bdc3c7; /* Slightly darker color on hover */
+            animation: fadeIn 0.5s;
+        }
+
+        /* Style for delete button */
+        .delete-btn {
+            background-color: #e74c3c; /* Red color for delete button */
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            background-color: #c0392b; /* Darker red on hover */
+        }
+
+        /* Keyframes for fade-in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form id="deleteForm" action="/delete_patient/" method="post">
+        {% csrf_token %}
+        <!-- CSRF token for security, replace action URL with your delete endpoint -->
+        <table class="beautiful-table">
+            <thead>
+                <tr>
+                    <th>Counsellor Name</th>
+                    <th>Patient Email</th>
+                    <th>AppointmentID</th>
+                    {% comment %} <th>Action</th> <!-- New column for delete button --> {% endcomment %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.posted_by }}</td>
+                    <td>{{ user.requested_by_id}}</td>
+                    <td>{{ user.appointment_id }}</td>
+                    {% comment %} <td>
+                        <button class="delete-btn" type="submit" form="deleteForm" name="user_id" value="{{ user.id }}">Delete</button>
+                        <!-- Button submits the form with the user ID as value -->
+                    </td> {% endcomment %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </form>
+</body>
+</html>

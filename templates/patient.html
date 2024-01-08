@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Beautiful Table</title>
+    <style>
+        /* Reset some default styles for the table */
+        .beautiful-table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        /* Style for table headers */
+        .beautiful-table th {
+            background-color: #a29bfe; /* Lavender color for headers */
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-bottom: 2px solid #6c5ce7; /* Darker border color */
+        }
+
+        /* Alternating row colors */
+        .beautiful-table tbody tr:nth-child(even) {
+            background-color: #dfe6e9; /* Light lavender for even rows */
+        }
+
+        /* Style for table cells */
+        .beautiful-table td {
+            padding: 15px;
+            border-bottom: 1px solid #bdc3c7;
+            text-align: center;
+        }
+
+        /* Hover effect for rows with animation */
+        .beautiful-table tbody tr {
+            transition: background-color 0.3s ease;
+        }
+
+        .beautiful-table tbody tr:hover {
+            background-color: #bdc3c7; /* Slightly darker color on hover */
+            animation: fadeIn 0.5s;
+        }
+
+        /* Keyframes for fade-in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <table class="beautiful-table">
+        <thead>
+            <tr>
+                <th>Patient Name</th>
+                <th>Patient Contact</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{user.name}}</td>
+                <td>{{user.phone_number}}</td>
+                <td>{{user.Age}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

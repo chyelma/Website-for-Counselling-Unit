@@ -8,7 +8,7 @@
     /* Add your custom styles here if needed */
     body {
       font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
+      background-color: #E6E6FA;
       margin: 0;
       padding: 20px;
     }
@@ -39,9 +39,11 @@
 
 <div class="dashboard-buttons">
   <a href="{% url 'create_appointment' %}" class="btn btn-primary dashboard-button">Create an Appointment</a>
-  <a href="#" class="btn btn-primary dashboard-button">My Upcoming Appointments</a>
-  <a href="#" class="btn btn-primary dashboard-button">Appointment History</a>
-  <a href="#" class="btn btn-primary dashboard-button">Edit Profile</a>
+  {% comment %} <a href="#" class="btn btn-primary dashboard-button">My Upcoming Appointments</a> {% endcomment %}
+  <a href="{% url 'meeting' %}" class="btn btn-primary dashboard-button">Create meeting</a>
+  {% comment %} <a href="#" class="btn btn-primary dashboard-button">Appointment History</a> {% endcomment %}
+  <a href="{% url 'view_documents' %}" class="btn btn-primary dashboard-button">View Documents</a>
+  {% comment %} <a href="#" class="btn btn-primary dashboard-button">Edit Profile</a> {% endcomment %}
   <a href="{% url 'logout' %}" class="btn btn-primary dashboard-button">Logout</a>
 </div>
 

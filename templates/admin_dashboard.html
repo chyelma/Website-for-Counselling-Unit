@@ -8,7 +8,7 @@
     /* Add custom styles here if needed */
     body {
       font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
+      background-color: #E6E6FA;
       margin: 0;
       padding: 20px;
     }
@@ -41,10 +41,9 @@
 
 <div class="dashboard-buttons">
   <a href="{% url 'enroll_counsellor' %}" class="btn btn-primary dashboard-button">Enroll a Counsellor</a>
-  <a href="#" class="btn btn-primary dashboard-button">Manage Appointments</a>
-  <a href="#" class="btn btn-primary dashboard-button">View Today's Appointments</a>
-  <a href="#" class="btn btn-primary dashboard-button">Patients</a>
-  <a href="#" class="btn btn-primary dashboard-button">Counsellors</a>
+  <a href="{% url 'manageappoinment' %}" class="btn btn-primary dashboard-button">View Appointments</a>
+  <a href="{% url 'patient' %}" class="btn btn-primary dashboard-button">Patients</a>
+  <a href="{% url 'counsellor' %}" class="btn btn-primary dashboard-button">Counsellors</a>
   <a href="{% url 'admin_logout' %}" class="btn btn-primary dashboard-button">Logout</a>
 </div>
 

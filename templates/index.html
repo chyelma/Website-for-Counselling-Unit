@@ -1,3 +1,4 @@
+
 {% comment %} <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,7 +67,7 @@
           margin: 0;
           padding: 0;
           line-height: 1.6;
-          background-color: #f8f8f8;
+          background-color: #E6E6FA;
       }
 
       /* Header Styles */
@@ -262,13 +263,22 @@
                 <img src="https://seeklogo.com/images/B/brac-university-logo-30065B3714-seeklogo.com.png" alt="Counseling Unit Logo">
             </div>
             <ul class="nav-links">
-                <li><a href="">Home</a></li>
-                <li><a class="button about-us" href="about.html">About Us</a></li>
-                <li><a class="button signup" href="{% url 'register' %}">Signup</a></li>
-                <li>  <a class="button signin" href="{% url 'login' %}">Signin</a></li>
+                <li><a href="{% url 'index'%}">Home</a></li>
+                {% comment %} <li><a class="button about-us" href="about.html">About Us</a></li> {% endcomment %}
+                <li><a class="button about-us" href="{% url 'story_page' %}">Stories</a></li>
+                <li><a class="button signup" href="{% url 'register' %}">Sign up</a></li>
+                <li>  <a class="button signin" href="{% url 'login' %}">Sign in</a></li>
             </ul>
         </nav>
-    </header>
+    </header> 
+
+
+
+
+
+
+
+
 
     <section class="hero">
         <h1>Welcome to BRAC University Counseling Unit</h1>
